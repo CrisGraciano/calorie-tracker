@@ -1,0 +1,27 @@
+*{
+    background-color: #85dcb8;
+}
+h1{
+color: #c38d9e;
+}
+.sign-up{
+border: 4px #c38d9e solid;
+float: center;
+max-height: 50%;
+max-width: 50%;
+background-color: #41b3a3;
+}
+.form{
+    background-color: #41b3a3;
+   text-align: center;
+}
+.input{
+    float: right;
+    width: 500px;
+}
+h3,
+a,
+h1 {
+    color: #e8a87c;
+    background-color: #41b3a3;
+}
