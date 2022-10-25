@@ -1,14 +1,7 @@
 const User = require("./user");
 //const Post = require("./Post");
+const Calorie = require("./calorie")
 
-
-// create associations
-User.hasMany(Post, {
-    foreignKey: 'user_id'
-  });
-
-  Post.belongsTo(User, {
-    foreignKey: 'user_id',
-  });
+// create sequilize association
   
-  module.exports = { User, Post};
+  module.exports = { User, Calorie};

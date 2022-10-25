@@ -1,27 +1,37 @@
 const router = require('express').Router();
-const { Post, User} = require('../models');
+const { Calorie, User} = require('../models');
 const sequelize = require('../config/connection');
 
-router.get('/', (req, res) => {
-    Post.findAll({
-      attributes: [
-        'id',
-        'post_url',
-        'title'
-      ],
+// router.get('/', (req, res) => {
+//     calories.findAll({
+//       attributes: [
+//         'id',
+//         'post_url',
+//         'title'
+//       ],
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['id', 'calorie_text', 'post_id', 'user_id', 'created_at'],
       
-    })
-      .then(dbPostData => {
-        // pass a single post object into the homepage template
-        console.log(dbPostData[0]);
-        const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('homepage', { posts });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-});
+//         },
+//         {
+//           model: User,
+//           attributes: ['username']
+//         }
+//       ]
+//     })
+//       .then(dbPostData => {
+//         // pass a single post object into the homepage template
+//         console.log(dbPostData[0]);
+//         const posts = dbPostData.map(post => post.get({ plain: true }));
+//         res.render('homepage', { posts });
+//       })
+//       .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//       });
+// });
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
