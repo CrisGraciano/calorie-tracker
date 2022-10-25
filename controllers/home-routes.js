@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Calorie } = require('../models');
+const { Post, User} = require('../models');
 const sequelize = require('../config/connection');
 
 router.get('/', (req, res) => {
@@ -9,20 +9,7 @@ router.get('/', (req, res) => {
         'post_url',
         'title'
       ],
-      include: [
-        {
-          model: Calorie,
-          attributes: ['id', 'calorie_text', 'post_id', 'user_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
-        {
-          model: User,
-          attributes: ['username']
-        }
-      ]
+      
     })
       .then(dbPostData => {
         // pass a single post object into the homepage template
@@ -45,10 +32,10 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/', (req, res) => {
-    console.log(req.session);
+// router.get('/', (req, res) => {
+//     console.log(req.session);
   
-    // other logic...
-});
+//     // other logic...
+// });
 
 module.exports = router;

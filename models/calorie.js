@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 
 class Calorie extends Model {
     // set up method to run on instance data (per user) to check password
@@ -34,3 +34,5 @@ Calorie.init(
         modelName: 'calorie'
     }
 );
+
+module.exports = Calorie;
