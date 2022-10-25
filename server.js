@@ -11,8 +11,10 @@ const helpers = require('./utils/helpers');
 const app = express();
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
 // makes app Heroku-compatible 
 const PORT = process.env.PORT || 3001;
+
 const sess = {
   secret: 'Super secret secret',
   cookie: {},
@@ -22,8 +24,10 @@ const sess = {
     db: sequelize
   })
 };
-
+app.use(express.static(path.join(__dirname, "public")));
 app.use(session(sess));
+app.use(express.json())
+app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));

@@ -3,6 +3,7 @@ const { User } = require('../../models');
 
 // Creates New User
 router.post('/', async (req, res) => {
+  console.log(req.body)
     try {
       const dbUserData = await User.create({
         username: req.body.username,
@@ -31,6 +32,9 @@ router.post('/login', async (req, res) => {
         },
       })
       .then(dbUserData => {
+        if (dbUserData){
+
+        }
         req.session.save(() => {
           req.session.user_id = dbUserData.id;
           req.session.username = dbUserData.username;
