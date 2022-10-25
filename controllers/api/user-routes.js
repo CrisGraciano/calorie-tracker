@@ -19,6 +19,7 @@ router.post('/', async (req, res) => {
       console.log(err);
       res.status(500).json(err);
     }
+    
 });
 
 // User Login
@@ -28,8 +29,16 @@ router.post('/login', async (req, res) => {
         where: {
           email: req.body.email,
         },
-      });
-  
+      })
+      .then(dbUserData => {
+        req.session.save(() => {
+          req.session.user_id = dbUserData.id;
+          req.session.username = dbUserData.username;
+          req.session.loggedIn = true;
+      
+          res.json(dbUserData);
+        });
+      })
       if (!dbUserData) {
         res
           .status(400)
