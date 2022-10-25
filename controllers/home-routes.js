@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
       attributes: [
         'id',
         'post_url',
-        'title',],
+        'title'],
       include: [
         {
           model: Calorie,
